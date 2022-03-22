@@ -5,6 +5,5 @@ public enum GameState {
     STARTED(),
     GAMEOVER(),
     PAUSED(),
-    CONTINUE(),
     NEWGAME()
 }

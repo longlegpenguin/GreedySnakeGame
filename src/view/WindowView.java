@@ -102,7 +102,7 @@ public class WindowView extends Application {
                 gc[0].clearRect(0, 0, layer[0].getWidth(), layer[0].getHeight());
                 drawingUtils.drawBackground(gc[0], GreedySnakeGame.game);
                 drawingUtils.drawGameModel(gc[0], GreedySnakeGame.game);
-                score.setText("Score: " + String.valueOf(GreedySnakeGame.game.getScore()));
+                score.setText("Score: " + GreedySnakeGame.game.getScore());
             }
         }, 200, 200);
     }

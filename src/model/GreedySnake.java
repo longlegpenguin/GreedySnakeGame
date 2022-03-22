@@ -60,7 +60,7 @@ public class GreedySnake {
 
     public void startOver(String key) {
 
-        if (key == "ENTER" && gs != STARTED) {
+        if (key.equals("ENTER") && gs != STARTED) {
             snake = new Snake(territory);
             gs = NEWGAME;
             System.out.println("NEW GAME!");
@@ -68,11 +68,6 @@ public class GreedySnake {
     }
 
     public void startingPrompt() {
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
     }
 
 
@@ -88,8 +83,7 @@ public class GreedySnake {
             if (snake.eat(food)) {
                 score++;
                 food = Food.generateFood(territory);
-            };
-
+            }
         }
 
         if (snake.hasCrossedBorder(territory) || snake.isEatingItself()) {

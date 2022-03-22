@@ -16,18 +16,15 @@ public class GreedySnakeGame {
     static public GreedySnake game = new GreedySnake(/*new SnakeTerritory()*/);
 
     public static EventHandler<KeyEvent> keyHandler() {
-        return new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
+        return event -> {
 //                System.out.println(event.getCode());
-                game.getSnake().changeDirection(event.getCharacter().toCharArray()[0]);
-                game.startOver(event.getCode().toString());
-            }
+            game.getSnake().changeDirection(event.getCharacter().toCharArray()[0]);
+            game.startOver(event.getCode().toString());
         };
     }
 
     public static EventHandler<ActionEvent> quitHandler() {
-        return new EventHandler<ActionEvent>() {
+        return new EventHandler<>() {
             @Override
             public void handle(ActionEvent event) {
                 ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
@@ -36,13 +33,13 @@ public class GreedySnakeGame {
     }
 
     public static EventHandler<ActionEvent> buttonHandler() {
-        return new EventHandler<ActionEvent>() {
+        return new EventHandler<>() {
             @Override
             public void handle(ActionEvent event) {
                 String id = ((Button)event.getSource()).getId();
-                if (id == "continue") {
+                if (id.equals("continue")) {
                     game.setGs(STARTED);
-                } else if (id == "pause" && game.getGs() == STARTED) {
+                } else if (id.equals("pause") && game.getGs() == STARTED) {
                     game.setGs(PAUSED);
                     System.out.println(event.getSource());
                     ((Button)event.getSource()).setContentDisplay(ContentDisplay.valueOf("Continue"));
